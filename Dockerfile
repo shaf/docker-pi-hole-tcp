@@ -8,7 +8,7 @@ ENV PATCHED="2017-10-11" \
     DNS1="127.0.0.1#5444" \
     DNS2="127.0.0.1#5445"
 
-RUN apk update && cd / && git clone https://github.com/splitice/utdns \
+RUN apk update && cd / && git clone https://github.com/shaf/utdns \
     && cd /utdns && chmod +x configure \
     && apk add g++ make && ./configure && make -j `nproc` \
     && apk del g++ make \
