@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+s6-svwait -u -t 250 /var/run/s6/services/php-fpm
+s6-echo "Starting dns1"
+
+DNSF1=${DNSF1:-'8.8.8.8'}
+/utdns/src/utdns -4 -p 5444 $DNSF1
