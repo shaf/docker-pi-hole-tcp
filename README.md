@@ -20,7 +20,7 @@ Do not override variables DNS1 and DNS2
 #
 docker run --name pihole -e ServerIP=192.168.1.66 --rm shaf/pi-hole-tcp
 
-# OpenDNS Familyshield
+# OpenDNS FamilyShield
 # 
 docker run -d --name pihole \
         -p ${our_ip}:80:80/tcp \
@@ -29,6 +29,19 @@ docker run -d --name pihole \
         -e ServerIP="${our_ip}" \
         -e DNSF1="208.67.222.123" \
         -e DNSF2="208.67.220.123" \
+        -e WEBPASSWORD="my_password" \
+        shaf/pi-hole-tcp
+
+# DNSSEC with via https://dns.watch/why
+#
+docker run -d --name pihole \
+        -p ${our_ip}:80:80/tcp \
+        -p ${our_ip}:53:53/tcp \
+        -p ${our_ip}:53:53/udp \
+        -e ServerIP="${our_ip}" \
+        -e DNSF1="84.200.69.80" \
+        -e DNSF2="84.200.70.40" \
+	-e DNSSEC=true \
         -e WEBPASSWORD="my_password" \
         shaf/pi-hole-tcp
 ```

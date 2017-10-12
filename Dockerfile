@@ -10,7 +10,7 @@ ENV PATCHED="2017-10-11" \
 
 RUN apk update && cd / && git clone https://github.com/shaf/utdns \
     && cd /utdns && chmod +x configure \
-    && apk add g++ make && ./configure && make -j `nproc` \
+    && apk del dnsmasq; apk add dnsmasq-dnssec g++ make && ./configure && make -j `nproc` \
     && apk del g++ make \
     && sed -i -e 's/^setup_dnsmasq ".*/setup_dnsmasq "127.0.0.1#5444" "127.0.0.1#5445"/' /start.sh
 
