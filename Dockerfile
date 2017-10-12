@@ -4,7 +4,7 @@ MAINTAINER Shaf Ali "github@shaf.net"
 
 ENV PATCHED="2017-10-11" \
     DNSF1="8.8.8.8" \
-    DNSF1="8.8.4.4" \
+    DNSF2="8.8.4.4" \
     DNS1="127.0.0.1#5444" \
     DNS2="127.0.0.1#5445"
 
